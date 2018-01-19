@@ -1,0 +1,31 @@
+{
+  "name": "FindTab",
+  "version": "0.0.1",
+  "description": "Fast tab switcher for Firefox",
+  "scripts": {
+    "dev": "npm-run-all -p build:watch firefox",
+    "firefox": "web-ext run -f nightly -p webext",
+    "build": "rollup -c rollup.config.js",
+    "build:watch": "npm run build -- --watch",
+    "package": "web-ext build --ignore-files package.json web-ext-artifacts src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gi`thub.com/cadecairos/FastTab.git"
+  },
+  "author": "Christopher De Cairos",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/cadecairos/FastTab/issues"
+  },
+  "homepage": "https://github.com/cadecairos/FastTab",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "js-search": "^1.4.2",
+    "npm-run-all": "^4.1.2",
+    "rollup": "^0.54.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^8.2.6"
+  }
+}

@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "name": "FastTab",
+    "version": "0.0.1",
+    "description": "Fast tab switching for Firefox",
+    "homepage_url": "https://github.com/cadecairos/FastTab",
+    "permissions": [
+        "activeTab",
+        "tabs"
+    ],
+    "browser_action": {
+        "browser_style": true,
+        "default_title": "FastTab",
+        "default_popup": "src/FastTab.html"
+    }
+}
