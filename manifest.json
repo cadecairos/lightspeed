@@ -11,6 +11,16 @@
     "browser_action": {
         "browser_style": true,
         "default_title": "FastTab",
-        "default_popup": "src/FastTab.html"
+        "default_popup": "src/popup.html"
+    },
+    "background": {
+        "scripts": ["src/dist/background.js"]
+    },
+    "commands": {
+        "_execute_browser_action": {
+            "suggested_key": {
+                "default": "Alt+Shift+P"
+            }
+        }
     }
 }
