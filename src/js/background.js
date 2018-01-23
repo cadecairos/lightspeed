@@ -4,12 +4,9 @@ const { tabs, runtime, windows } = browser;
 
 class FastTabIndex {
     constructor() {
-        // TODO: Per Window TabMaps
         this.tabMap =  new Map();
 
         tabs.onCreated.addListener((...args) => this.addTab(...args));
-        tabs.onAttached.addListener((...args) => this.onAttached(...args));
-        tabs.onDetached.addListener((...args) => this.onDetached(...args));
         tabs.onUpdated.addListener((...args) => this.onUpdated(...args));
         tabs.onRemoved.addListener((...args) => this.onRemoved(...args));
 
@@ -26,8 +23,8 @@ class FastTabIndex {
         return Array.from(this.tabMap.values());
     }
 
-    formatTab({id, url, title}) {
-        return {id, url, title};
+    formatTab({id, url, title, windowId}) {
+        return {id, url, title, windowId};
     }
 
     addTab(tab) {
@@ -36,26 +33,6 @@ class FastTabIndex {
         }
 
         this.tabMap.set(tab.id, this.formatTab(tab));
-    }
-
-    async onAttached(tabId, attachInfo) {
-        if (this.tabMap.has(tabId)) {
-            return;
-        }
-
-        const tab = await tabs.get(tabId);
-
-        if (!tab || tab.windowId !== windows.WINDOW_ID_CURRENT) {
-            return;
-        }
-
-        this.tabMap.set(tab.id, this.formatTab(tab));
-    }
-
-    onDetached(tabId) {
-        if (this.tabMap.has(tabId)) {
-            this.tabMap.delete(tabId);
-        }
     }
 
     onUpdated(tabId, changeInfo, tab) {
@@ -79,6 +56,10 @@ class FastTabIndex {
     }
 
     searchIndex(searchText, sender, sendResponse) {
+        if (searchText === '') {
+            return sendResponse(this.tabMapValueArray);
+        }
+
         sendResponse(fuzzy.filter(
             searchText,
             this.tabMapValueArray,
@@ -87,7 +68,7 @@ class FastTabIndex {
     }
 
     async init() {
-        const currentTabs = await tabs.query({ currentWindow: true });
+        const currentTabs = await tabs.query({});
         for(const tab of currentTabs) {
             this.tabMap.set(tab.id, this.formatTab(tab));
         }

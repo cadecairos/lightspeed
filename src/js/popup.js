@@ -1,6 +1,7 @@
 const {
     tabs,
     runtime,
+    windows
 } = browser;
 
 class FastTab {
@@ -19,6 +20,8 @@ class FastTab {
             this._searchBox.focus();
           }, 0)
         }, 50);
+
+        this.searchTabs();
     }
 
     set selectedIndex(newValue) {
@@ -51,7 +54,7 @@ class FastTab {
         this.clear();
 
         if (!this._searchableTabs.length) {
-            console.log("No results");
+            console.log("No Searchable Tabs");
             return;
         }
 
@@ -59,12 +62,23 @@ class FastTab {
         this.selectedIndex = 0;
     }
 
-    switchToSelectedTab() {
-        const tabId = this._searchableTabs[this.selectedIndex].id;
-        tabs.update(tabId, {
-            active: true
-        })
-        .then(() => window.close());
+    async switchToSelectedTab() {
+        const {id, windowId} = this._searchableTabs[this.selectedIndex];
+        try {
+            await tabs.update(id, {
+                active: true
+            })
+
+            if(windows.WINDOW_ID_CURRENT === windowId){
+                return Promise.resolve();
+            }
+
+            await windows.update(windowId, { focused: true });
+
+            window.close();
+        } catch (error) {
+            console.error(`Error switching tabs: ${error}`);
+        }
     }
 
     processKeyUp(event) {
