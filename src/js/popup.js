@@ -7,7 +7,7 @@ const {
 class FastTab {
     constructor() {
         this._searchBox = document.querySelector('#search-box');
-        this._resultsDiv = document.querySelector('#results-div');
+        this._resultsDiv = document.querySelector('#results-container');
         this._selectedIndex = 0;
 
         this._searchBox.addEventListener('input', () => this.searchTabs());
@@ -110,7 +110,7 @@ class FastTab {
 
     renderTab(tab, index) {
         const tabDiv = document.createElement('div');
-        tabDiv.classList.add('result-item');
+        tabDiv.classList.add('results-item');
         tabDiv.textContent = tab.title;
         tabDiv.setAttribute('data-tab-id', tab.id);
         this._resultsDiv.appendChild(tabDiv);
