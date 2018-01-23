@@ -28,31 +28,23 @@ class LightspeedIndex {
     }
 
     addTab(tab) {
-        if (this.tabMap.has(tab.id)) {
-            return;
+        if (!this.tabMap.has(tab.id)) {
+            this.tabMap.set(tab.id, this.formatTab(tab));
         }
 
-        this.tabMap.set(tab.id, this.formatTab(tab));
     }
 
     onUpdated(tabId, changeInfo, tab) {
-        if (!this.tabMap.has(tabId)) {
-            return;
+        const hasChanged = !!(changeInfo.url || changeInfo.title);
+        if (this.tabMap.has(tabId) && hasChanged) {
+            this.tabMap.set(tabId, this.formatTab(tab));
         }
-
-        if (!changeInfo.url && !changeInfo.title) {
-            return;
-        }
-
-        this.tabMap.set(tabId, this.formatTab(tab));
     }
 
     onRemoved(tabId) {
-        if (!this.tabMap.has(tabId)) {
-            return;
+        if (this.tabMap.has(tabId)) {
+            this.tabMap.delete(tabId);
         }
-
-        this.tabMap.delete(tabId);
     }
 
     searchIndex(searchText, sender, sendResponse) {
