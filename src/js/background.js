@@ -8,7 +8,7 @@ class LightspeedIndex {
 
         tabs.onCreated.addListener((...args) => this.addTab(...args));
         tabs.onUpdated.addListener((...args) => this.onUpdated(...args));
-        tabs.onRemoved.addListener((...args) => this.onRemoved(...args));
+        tabs.onRemoved.addListener(tabId) => this.tabMap.delete(tabId));
 
         browser.runtime.onMessage.addListener((...args) => {
             this.searchIndex(...args);
@@ -35,15 +35,8 @@ class LightspeedIndex {
     }
 
     onUpdated(tabId, changeInfo, tab) {
-        const hasChanged = !!(changeInfo.url || changeInfo.title);
-        if (this.tabMap.has(tabId) && hasChanged) {
+        if (changeInfo.url || changeInfo.title) {
             this.tabMap.set(tabId, this.formatTab(tab));
-        }
-    }
-
-    onRemoved(tabId) {
-        if (this.tabMap.has(tabId)) {
-            this.tabMap.delete(tabId);
         }
     }
 
