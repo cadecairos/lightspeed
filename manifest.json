@@ -1,16 +1,16 @@
 {
     "manifest_version": 2,
-    "name": "FastTab",
+    "name": "Lightspeed",
     "version": "0.0.1",
     "description": "Fast tab switching for Firefox",
-    "homepage_url": "https://github.com/cadecairos/FastTab",
+    "homepage_url": "https://gitlab.com/cadecairos/Lightspeed",
     "permissions": [
         "activeTab",
         "tabs"
     ],
     "browser_action": {
         "browser_style": true,
-        "default_title": "FastTab",
+        "default_title": "Lightspeed",
         "default_popup": "src/popup.html"
     },
     "background": {

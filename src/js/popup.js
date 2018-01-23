@@ -4,7 +4,7 @@ const {
     windows
 } = browser;
 
-class FastTab {
+class Lightspeed {
     constructor() {
         this._searchBox = document.querySelector('#search-box');
         this._resultsDiv = document.querySelector('#results-container');
@@ -118,4 +118,4 @@ class FastTab {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => new FastTab());
+document.addEventListener('DOMContentLoaded', () => new Lightspeed());

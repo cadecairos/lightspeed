@@ -1,5 +1,5 @@
 {
-  "name": "FindTab",
+  "name": "Lightspeed",
   "version": "0.0.1",
   "description": "Fast tab switcher for Firefox",
   "scripts": {
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gi`thub.com/cadecairos/FastTab.git"
+    "url": "git+https://gitlab.com/cadecairos/Lightspeed"
   },
   "author": "Christopher De Cairos",
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/cadecairos/FastTab/issues"
+    "url": "https://gitlab.com/cadecairos/Lightspeed/issues"
   },
-  "homepage": "https://github.com/cadecairos/FastTab",
+  "homepage": "https://gitlab.com/cadecairos/Lightspeed",
   "devDependencies": {
     "fuzzy": "0.1.3",
     "npm-run-all": "^4.1.2",

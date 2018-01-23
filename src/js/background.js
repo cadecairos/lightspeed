@@ -2,7 +2,7 @@ import fuzzy from 'fuzzy'
 
 const { tabs, runtime, windows } = browser;
 
-class FastTabIndex {
+class LightspeedIndex {
     constructor() {
         this.tabMap =  new Map();
 
@@ -75,4 +75,4 @@ class FastTabIndex {
     }
 }
 
-(new FastTabIndex()).init();
+(new LightspeedIndex()).init();
