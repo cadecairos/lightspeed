@@ -8,7 +8,7 @@ class LightspeedIndex {
 
         tabs.onCreated.addListener((...args) => this.addTab(...args));
         tabs.onUpdated.addListener((...args) => this.onUpdated(...args));
-        tabs.onRemoved.addListener(tabId) => this.tabMap.delete(tabId));
+        tabs.onRemoved.addListener(tabId => this.tabMap.delete(tabId));
 
         browser.runtime.onMessage.addListener((...args) => {
             this.searchIndex(...args);

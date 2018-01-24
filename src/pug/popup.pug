@@ -1,0 +1,16 @@
+doctype html
+html(lang="en")
+    head
+      title= Lightspeed
+      meta(charset="utf-8")
+      meta(name="viewport" content="width=device-width, initial-scale=1")
+      link(rel="stylesheet" type="text/css" href="/dist/css/popup.css")
+      script(type="text/javascript" src="/src/js/popup.js")
+
+    body
+      .section
+        .container
+          .column
+            input#search-box(type="text", class="input is-focused is-medium" placeholder="Search Tabs")
+          .column
+            #results-container

@@ -4,7 +4,7 @@ import resolve from 'rollup-plugin-node-resolve';
 export default {
   input: 'src/js/background.js',
   output: {
-    file: 'src/dist/background.js',
+    file: 'dist/js/background.js',
     format: 'iife'
   },
   plugins: [

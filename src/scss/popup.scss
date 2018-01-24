@@ -1,0 +1,15 @@
+
+@import "../../node_modules/bulma/sass/utilities/initial-variables";
+@import "../../node_modules/bulma/sass/utilities/functions";
+
+$section-padding: 0rem;
+
+$selected-bg-color: hsl(0, 0%, 80%);
+$selected-text-color: findColorInvert($selected-bg-color);
+
+.selected {
+    background-color: $selected-bg-color !important;
+    color: $selected-text-color;
+}
+
+@import "../../node_modules/bulma/bulma";
