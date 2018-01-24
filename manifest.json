@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Lightspeed",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Fast tab switching for Firefox",
     "homepage_url": "https://gitlab.com/cadecairos/Lightspeed",
     "permissions": [

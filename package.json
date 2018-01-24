@@ -1,6 +1,6 @@
 {
   "name": "Lightspeed",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Fast tab switcher for Firefox",
   "scripts": {
     "dev": "npm-run-all -p watch:* firefox",
